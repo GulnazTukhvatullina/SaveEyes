@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveEyes1", "SaveEyes1\SaveEyes1.csproj", "{80B4446B-F8D8-4BED-AFD0-A894ED18342B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80B4446B-F8D8-4BED-AFD0-A894ED18342B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B4446B-F8D8-4BED-AFD0-A894ED18342B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B4446B-F8D8-4BED-AFD0-A894ED18342B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B4446B-F8D8-4BED-AFD0-A894ED18342B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7023F7BA-3960-4CE6-B52C-8119801198F1}
+	EndGlobalSection
+EndGlobal

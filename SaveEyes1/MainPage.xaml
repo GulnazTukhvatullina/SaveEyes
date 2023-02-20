@@ -1,0 +1,136 @@
+﻿<Page x:Class="SaveEyes1.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SaveEyes1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage" Background="#FFE9F9"
+      FontFamily="Century Gothic" FontSize="18">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Поиск"/>
+            <TextBox x:Name="tb_search"
+                     TextChanged="tb_search_SelectionChanged"
+                     Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Сортировка"/>
+            <ComboBox x:Name="cb_sort"
+                      Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Фильтрация"/>
+            <ComboBox x:Name="cb_filter"
+                      ItemsSource="{Binding AgentType}"
+                      SelectedIndex="0"
+                      SelectionChanged="cb_filter_SelectionChanged"
+                      Width="200">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <ListView x:Name="agents"
+                  ItemsSource="{Binding DB.Agent}"
+                  SelectionChanged="agents_SelectionChanged"
+                  MouseDoubleClick="agents_MouseDoubleClick"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Width="150" Height="70"
+                                   Grid.Column="0">
+                                <Image.Source>
+                                    <Binding Path="Logo">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/resource/picture.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <StackPanel Orientation="Vertical"
+                                        Grid.Column="1">
+                                <TextBlock>
+                                    <Run Text="{Binding AgentType.Title}"/>
+                                    <Run Text="|"/>
+                                    <Run Text="{Binding Title}"/>
+                                </TextBlock>
+
+                                <TextBlock Text="{Binding Phone}"/>
+
+                                <TextBlock>
+                                    <Run Text="Приоритетность:"/>
+                                    <Run Text="{Binding Priority}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="btn_add"
+                Content="Добавить"
+                Grid.Column="1"
+                Grid.Row="2"
+                Width="150"
+                Height="40"
+                Click="btn_add_Click"
+                Style="{DynamicResource ButtonStyle}"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="3" HorizontalAlignment="Right">
+            <Button x:Name="PreviousPageButton"
+                    Content="&lt;" 
+                    Click="PreviousPageButton_Click"
+                    Style="{DynamicResource ButtonStyle}"/>
+            <StackPanel Orientation="Horizontal" 
+                        x:Name="PageNumbersPanel"/>
+            <Button x:Name="NextPageButton" 
+                    Content="&gt;" 
+                    Click="NextPageButton_Click"
+                    Style="{DynamicResource ButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+</Page>
